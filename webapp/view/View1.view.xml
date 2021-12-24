@@ -1,0 +1,16 @@
+<mvc:View controllerName="com.airdit.Routing.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<Page title="View 1">
+		<SearchField id="listSearch" liveChange="onSearch"></SearchField>
+	 	 <List id= "idList" items= "{/fruits}" mode= "SingleSelectMaster" selectionChange="onItemSelection" growing="true" growingThreshold="8">
+	 	 	<ObjectListItem intro="{taste}" title="{name}" number="{price}" numberUnit="{curr}" icon="{image}" press="onNext">
+	 	 		 <firstStatus>
+	 	 		 	 <ObjectStatus text="{availability}">
+	 	 		 	 	</ObjectStatus>
+	 	 		 </firstStatus>
+	 	 		</ObjectListItem>
+	 	 </List>
+	 	
+	 	</Page>
+	 	
+	 	</mvc:View>
+	

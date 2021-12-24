@@ -1,0 +1,11 @@
+<mvc:View controllerName="com.airdit.Routing.controller.View2" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<Page title="View 2">
+	<!--<Img src="https://insomniac.games/wp-content/uploads/2018/09/Spider-Man_PS4_Selfie_Photo_Mode_LEGAL.jpg"> </Img>-->
+	<f:SimpleForm editable="true" title=" Login Details">
+		<Label text="Username"/>
+		<Input width="300px"></Input>
+		<Label text="Password"/>
+		<Input width="300px"></Input>
+	</f:SimpleForm>
+	</Page>
+</mvc:View>

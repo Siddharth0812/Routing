@@ -1,0 +1,121 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "com.airdit.Routing",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "com.airdit.Routing.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.airdit.Routing.i18n.i18n"
+				}
+			},
+			
+			"": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/mockdata/Fruits.json"
+				}
+		},
+			
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.airdit.Routing.view",
+			"controlId": "idAppCon",
+			 "clearTarget": true
+				
+			},
+			
+			"routes": [{
+				"pattern": "",
+				"name": "home",
+				"target": ["View1", "View2"]
+			},
+			{
+			"pattern": "detail/{Id}",
+				"name": "detail",
+				"target": ["View1", "Detail"]	
+			}],
+				
+			"targets": {
+				"View1": {
+					"viewName": "View1",
+					"id":"idV1",
+					"controlAggregation": "masterPages"
+				},
+				
+				"View2": {
+					"viewName": "View2",
+					"id":"idV2",
+					"controlAggregation": "detailPages"
+				},
+				
+				"Detail": {
+					"viewName": "Detail",
+					"id": "idV3",
+					"controlAggregation": "detailPages"
+				}
+				
+			}
+		}
+	}
+}
