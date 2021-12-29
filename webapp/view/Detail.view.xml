@@ -6,65 +6,22 @@
 		<IconTabBar>
 			<items>
 				<IconTabFilter key="idDetails" text="More Details" icon="sap-icon://hint">
-					<Panel headerText="Product Details"></Panel>
-					<F:SimpleForm>
-						<Label text="Product Name"/>
-						<Text text="{name}"></Text>
-						<Label text="Product Color"/>
-						<Text text="{color}"></Text>
-						<Label text="Product Size"/>
-						<Text text="{size}"></Text>
-						<Label text="Product Price"/>
-						<Text text="{price}"></Text>
-						<Label text="Product Currency"/>
-						<Text text="{curr}"></Text>
-						<Label text="Health Benefits"/>
-						<Text text="{healthBenefit}"></Text>
-						<Label text="Product Season"/>
-						<Text text="{season}"></Text>
-					</F:SimpleForm>
+					<core:Fragment type="XML" id="Info" fragmentName="com.airdit.Routing.Fragments.moreInfo"> </core:Fragment>
 				</IconTabFilter>
-				<IconTabFilter key="idSuppliers" text="Suppliers" icon="sap-icon://customer">
-					<SearchField id="detailSearch" liveChange="onSearch1"></SearchField>
-					<Table id="MobileTable" items="{path:'/supplier', sorter:{path: 'noOfStores'}}">
-						<columns>
-							<Column>
-								<Text text="Name"/>
-							</Column>
-							<Column>
-								<Text text="Since When"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true">
-								<Text text="Contact Number"/>
-							</Column>
-							<Column hAlign="Right" minScreenWidth="Tablet">
-								<Text text="Person"/>
-							</Column>
-							<Column hAlign="End" minScreenWidth="Tablet">
-								<Text text="Number Of Stores"/>
-							</Column>
-						</columns>
-						<items>
-							<ColumnListItem>
-								<cells>
-									<Text text="{name}"/>
-									<Text text="{sinceWhen}"/>
-									<Text text="{contactNo}"/>
-									<Text text="{person}"/>
-									<Text text="{noOfStores}"/>
-								</cells>
-							</ColumnListItem>
-						</items>
-					</Table>
+				<IconTabFilter key="idSuppliers" text="Suppliers" icon="sap-icon://supplier">
+				<core:Fragment type="XML" fragmentName="com.airdit.Routing.Fragments.SupplierData"></core:Fragment>
 				</IconTabFilter>
 				<IconTabFilter key="idCities" text="Cities" icon="sap-icon://home">
-					<ComboBox id="idCombox" items="{/cities}">
-                        <items>
-                            <core:Item key="{name}" text="{name}" />
-                        </items>
-                    </ComboBox>
+						<core:Fragment type="XML" id="cityInfo" fragmentName="com.airdit.Routing.Fragments.Cities"></core:Fragment>
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
+			<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept" press="onAccept" />
+				<Button text="Reject" type="Reject" press="onReject" />
+			</Toolbar>
+		</footer>
 	</Page>
 </mvc:View>

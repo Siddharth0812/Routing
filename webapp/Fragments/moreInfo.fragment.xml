@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:F="sap.ui.layout.form">
+	<Panel headerText="Product Details"></Panel>
+					<F:SimpleForm>
+						<Label text="Product Name"/>
+						<Text text="{name}"></Text>
+						<Label text="Product Color"/>
+						<Text text="{color}"></Text>
+						<Label text="Product Size"/>
+						<Text text="{size}"></Text>
+						<Label text="Product Price"/>
+						<Text text="{price}"></Text>
+						<Label text="Product Currency"/>
+						<Text text="{curr}"></Text>
+						<Label text="Health Benefits"/>
+						<Text text="{healthBenefit}"></Text>
+						<Label text="Product Season"/>
+						<Text text="{season}"></Text>
+					</F:SimpleForm>
+</core:FragmentDefinition>

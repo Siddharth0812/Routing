@@ -9,7 +9,13 @@
 	 	 		 </firstStatus>
 	 	 		</ObjectListItem>
 	 	 </List>
-	 	
+	 	<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://delete" tooltip="Delete" press="onDelete" />
+				</Toolbar>
+					 	</footer>
+
 	 	</Page>
 	 	
 	 	</mvc:View>
