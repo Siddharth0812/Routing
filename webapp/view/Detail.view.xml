@@ -6,13 +6,13 @@
 		<IconTabBar>
 			<items>
 				<IconTabFilter key="idDetails" text="More Details" icon="sap-icon://hint">
-					<core:Fragment type="XML" id="Info" fragmentName="com.airdit.Routing.Fragments.moreInfo"> </core:Fragment>
+					<core:Fragment type="XML" fragmentName="com.airdit.Routing.Fragments.moreInfo"> </core:Fragment>
 				</IconTabFilter>
 				<IconTabFilter key="idSuppliers" text="Suppliers" icon="sap-icon://supplier">
 				<core:Fragment type="XML" fragmentName="com.airdit.Routing.Fragments.SupplierData"></core:Fragment>
 				</IconTabFilter>
 				<IconTabFilter key="idCities" text="Cities" icon="sap-icon://home">
-						<core:Fragment type="XML" id="cityInfo" fragmentName="com.airdit.Routing.Fragments.Cities"></core:Fragment>
+						<core:Fragment type="XML" fragmentName="com.airdit.Routing.Fragments.Cities"></core:Fragment>
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
