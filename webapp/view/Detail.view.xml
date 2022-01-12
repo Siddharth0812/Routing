@@ -1,6 +1,6 @@
 <mvc:View controllerName="com.airdit.Routing.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core"
 	xmlns:F="sap.ui.layout.form">
-	<Page title="Detail View" showNavButton="true" navButtonPress="onBack">
+	<Page title="Detail View" showNavButton="true" navButtonPress="onNavBack">
 		<ObjectHeader title="{name}" intro="{healthBenefit}" number="{price}" numberUnit="{curr}" icon="{image}"></ObjectHeader>
 		
 		<IconTabBar>

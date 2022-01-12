@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/Device",
 	"sap/ui/model/Sorter",
-	"sap/ui/core/Fragment"
-], function (Controller, FilterOperator, Filter, Device, Sorter, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/core/routing/History"
+], function (Controller, FilterOperator, Filter, Device, Sorter, Fragment, History) {
 	"use strict";
 
 	return Controller.extend("com.airdit.Routing.controller.Detail", {
@@ -29,8 +30,16 @@ sap.ui.define([
 			//Step 3: Bind the element to set the data on V2
 			this.getView().bindElement(sPath);
 		},
-		onBack: function () {
-			this.getView().getParent().getParent().to("idV2");
+		onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = this.getOwnerComponent().getRouter();
+				oRouter.navTo("View2", {}, true);
+			}
 		},
 
 		getViewSettingsDialog: function (sDialogFragmentName) {
@@ -74,23 +83,23 @@ sap.ui.define([
 			// apply the selected sort and group settings
 			oBinding.sort(aSorters);
 		},
-		
-			onConfirm: function(oEvent){
-				 var oSelectedItem = oEvent.getParameter("selectedItem");
-				 if(oEvent.getSource().getId().indexOf("supplier") !== -1){
-				 	 var supplierName = oSelectedItem.getTitle();
-                var oFilter = new Filter("name", FilterOperator.EQ, supplierName);
-                 var oTable = this.getView().byId("MobileTable");
-                oTable.getBinding("items").filter(oFilter);
-				 }else{
-				 	 var selectedCity = oSelectedItem.getLabel();
-				 	  this.fieldObject.setValue(selectedCity);
-				 }
-			},
-			
+
+		onConfirm: function (oEvent) {
+			var oSelectedItem = oEvent.getParameter("selectedItem");
+			if (oEvent.getSource().getId().indexOf("supplier") !== -1) {
+				var supplierName = oSelectedItem.getTitle();
+				var oFilter = new Filter("name", FilterOperator.EQ, supplierName);
+				var oTable = this.getView().byId("MobileTable");
+				oTable.getBinding("items").filter(oFilter);
+			} else {
+				var selectedCity = oSelectedItem.getLabel();
+				this.fieldObject.setValue(selectedCity);
+			}
+		},
+
 		Citypopup: null,
-		SupplierPopup:null,
-		fieldObject:null,
+		SupplierPopup: null,
+		fieldObject: null,
 
 		onF4: function (oEvent) {
 			this.fieldObject = oEvent.getSource();
@@ -119,28 +128,28 @@ sap.ui.define([
 			}
 
 		},
-		
-		onFilter:function(){
-			if(!this.SupplierPopup){
+
+		onFilter: function () {
+			if (!this.SupplierPopup) {
 				Fragment.load({
 					id: "supplier",
-					name:"com.airdit.Routing.Fragments.Popup",
+					name: "com.airdit.Routing.Fragments.Popup",
 					controller: this
-				}).then(function(oDialog) {
+				}).then(function (oDialog) {
 					this.SupplierPopup = oDialog;
 					this.SupplierPopup.bindAggregation("items", {
 						path: "/supplier",
 						template: new sap.m.StandardListItem({
 							icon: "sap-icon://supplier",
-                            description : "Since {sinceWhen} in {city}",
-                            title : "{name}"
+							description: "Since {sinceWhen} in {city}",
+							title: "{name}"
 						})
-						
+
 					});
 					this.getView().addDependent(this.SupplierPopup);
-                    this.SupplierPopup.open();
+					this.SupplierPopup.open();
 				}.bind(this));
-			}else{
+			} else {
 				this.SupplierPopup.open();
 			}
 		}
